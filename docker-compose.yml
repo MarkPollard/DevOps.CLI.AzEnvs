@@ -1,0 +1,48 @@
+name: devops-cli-aks
+
+volumes:
+  devops-cli-aks-dev-home-data:
+  devops-cli-aks-prod-home-data:
+
+services:
+  devops-cli-aks-dev:
+    image: devops-cli-aks:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      AZURE_CONFIG_DIR: /config/.azure
+      KUBECONFIG: /config/.kube/config
+      EXTERNAL_PORT: 8782
+    env_file: .dev.env
+    volumes:
+      - $USERPROFILE/.azure-dev:/config/.azure
+      - devops-cli-aks-dev-home-data:/root
+      - $KUBECONFIG-dev:/config/.kube/config
+    ports:
+      - 8782:8686
+    container_name: devops-cli-aks-dev
+    hostname: devops-cli-aks-dev
+    stdin_open: true
+    tty: true
+
+  devops-cli-aks-prod:
+    image: devops-cli-aks:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      AZURE_CONFIG_DIR: /config/.azure
+      KUBECONFIG: /config/.kube/config
+      EXTERNAL_PORT: 8783
+    env_file: .prod.env
+    volumes:
+      - $USERPROFILE/.azure-prod:/config/.azure
+      - devops-cli-aks-prod-home-data:/root
+      - $KUBECONFIG-prod:/config/.kube/config
+    ports:
+      - 8783:8686
+    container_name: devops-cli-aks-prod
+    hostname: devops-cli-aks-prod
+    stdin_open: true
+    tty: true

@@ -1,0 +1,34 @@
+#! /bin/bash
+set -e -u
+
+az_login_if_missing_tenant() {
+  local SUBSCRIPTIONS
+  SUBSCRIPTIONS=$(az account list | jq --arg tenant "$INIT_AZ_TENANT" '.[] | select(.tenantId == $tenant).id')
+  while [[ -z "${SUBSCRIPTIONS}" ]]; do
+    echo "Login to _az account required"
+    az login
+    SUBSCRIPTIONS=$(az account list | jq --arg tenant "$INIT_AZ_TENANT" '.[] | select(.tenantId == $tenant).id')
+  done;
+}
+
+az_subscription() {
+  local CURRENT_SUBSCRIPTION
+  CURRENT_SUBSCRIPTION=$(az account show --query name --output tsv)
+  if [[ "${CURRENT_SUBSCRIPTION}" != "${INIT_AZ_SUBSCRIPTION}" ]]; then
+    echo "Switching to subscription"
+    az account set --subscription "${INIT_AZ_SUBSCRIPTION}"
+  fi
+}
+
+az_login_if_necessary() {
+  while ! az account list-locations --output none; do
+    echo "Login to az account required"
+    az login
+  done
+}
+
+az_login_if_missing_tenant
+
+az_subscription
+
+az_login_if_necessary
