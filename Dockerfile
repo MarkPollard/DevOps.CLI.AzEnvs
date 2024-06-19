@@ -8,7 +8,12 @@ RUN az aks install-cli && \
     ISTIO_VERSION="$(curl -sL https://github.com/istio/istio/releases | grep -o 'releases/[0-9]*.[0-9]*.[0-9]*/' | sort -V | tail -1 | awk -F'/' '{ print $2}')" && \
     ISTIO_VERSION="${ISTIO_VERSION##*/}" && curl -sL https://istio.io/downloadIstio | sh - && \
     cp "/istio-${ISTIO_VERSION}/bin/istioctl" /usr/local/bin && cp "/istio-${ISTIO_VERSION}/tools/istioctl.bash" /usr/local/bin && \
-    rm -rf "/istio-${ISTIO_VERSION}"
+    rm -rf "/istio-${ISTIO_VERSION}" && \
+    TERRAFORM_VERSION="$(curl -sL https://releases.hashicorp.com/terraform | grep -o '/terraform/[0-9]*.[0-9]*.[0-9]*/' | sort -V | tail -1 | awk -F'/' '{ print $3}')" && \
+    TERRAFORM_VERSION="${TERRAFORM_VERSION##*/}" && \
+    wget "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" && \
+    unzip "terraform_${TERRAFORM_VERSION}_linux_amd64.zip" && rm "terraform_${TERRAFORM_VERSION}_linux_amd64.zip" && \
+    mv terraform /usr/local/bin
 
 RUN curl -s https://ohmyposh.dev/install.sh | bash -s
 

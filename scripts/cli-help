@@ -14,6 +14,7 @@ ${BROWN}CLI Tools${ENDCOLOR} include:
     kubectl (k)           The Kubernetes command line interface
     istioctl (ic)         The Istio command line interface
     helm                  The Helm command line interface
+    terraform (tf)        The Hashicorp Terraform command line interface
 
 The ${BROWN}scripts${ENDCOLOR} include:
     az-initlogin          Login to the azure subscription and cluster, configured in the INIT_ environment variables

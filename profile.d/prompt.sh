@@ -19,6 +19,8 @@ complete -F __start_kubectl k
 alias ic=istioctl
 complete -F __start_istioctl ic
 
+alias tf=terraform
+
 title () {
   local CLUSTER NAMESPACE
   CLUSTER=$(kubectl config view --minify --output 'jsonpath={..current-context}' | sed -r -e 's/([A-Z]+-[A-Z]+).*/\1/')

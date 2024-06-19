@@ -13,6 +13,7 @@ Sets the promps to show the currently configured Azure user/subscription and Kub
 * [helm](https://helm.sh/docs/intro/install/)
   * [helm completion bash](https://helm.sh/docs/helm/helm_completion_bash/)
 * [jq](https://stedolan.github.io/jq/)
+* [terraform](https://developer.hashicorp.com/terraform/) aliased to `tf`
 
 
 ## Configure
