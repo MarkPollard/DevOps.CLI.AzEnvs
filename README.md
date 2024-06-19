@@ -1,6 +1,6 @@
-# DevOps.CLI.AKS
+# DevOps.CLI.AzEnvs
 
-Creates preconfigured containers with required CLI tools, scripts and extensions for managing AKS clusters.
+Creates preconfigured containers with required CLI tools, scripts and extensions for managing Azure environments and AKS clusters.
 Sets the promps to show the currently configured Azure user/subscription and Kubernetes cluster/namespace.
 
 ## CLI tools
@@ -8,6 +8,8 @@ Sets the promps to show the currently configured Azure user/subscription and Kub
 * [az](https://docs.microsoft.com/en-us/cli/azure/) azure cli
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/) aliased to `k`
   * [kubectl completion bash](https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-bash-linux/)
+* [istioctl](https://preliminary.istio.io/latest/docs/ops/diagnostic-tools/istioctl/) aliased to `ic`
+  * [istioctl completion bash](https://preliminary.istio.io/latest/docs/ops/diagnostic-tools/istioctl/#enabling-auto-completion)
 * [helm](https://helm.sh/docs/intro/install/)
   * [helm completion bash](https://helm.sh/docs/helm/helm_completion_bash/)
 * [jq](https://stedolan.github.io/jq/)
@@ -33,9 +35,9 @@ docker compose up -d --build
 
 ```bash
 #dev
-docker compose exec devops-cli-aks-dev /bin/bash --login
+docker compose exec devops-cli-azenvs-dev /bin/bash --login
 #prod
-docker compose exec devops-cli-aks-prod /bin/bash --login
+docker compose exec devops-cli-azenvs-prod /bin/bash --login
 ```
 
 ## Removing

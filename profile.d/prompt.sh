@@ -11,9 +11,13 @@ eval "$(oh-my-posh init bash --config ~/.ohmy.theme.omp.json)"
 source <(kubectl completion bash)
 source <(helm completion bash)
 source /usr/local/bin/az.completion.sh
+source /usr/local/bin/istioctl.bash
 
 alias k=kubectl
 complete -F __start_kubectl k
+
+alias ic=istioctl
+complete -F __start_istioctl ic
 
 title () {
   local CLUSTER NAMESPACE

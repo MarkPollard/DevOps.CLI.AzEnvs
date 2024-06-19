@@ -1,22 +1,23 @@
 #! /bin/bash
 
 GREEN="\e[1;32m"
-CYAN="\e[35m"
+BROWN="\e[33m"
 ENDCOLOR="\e[0m"
 
 echo -e "
-${GREEN}DevOps CLI AKS${ENDCOLOR}
+${GREEN}DevOps CLI AzEnvs${ENDCOLOR}
 
-A preconfigured container with required CLI tools, scripts and extensions for managing AKS clusters.
+A preconfigured container with required CLI tools, scripts and extensions for managing Azure environments and AKS clusters.
 
-${CYAN}CLI Tools${ENDCOLOR} include:
+${BROWN}CLI Tools${ENDCOLOR} include:
     az                    The Azure command line interface
-    kubectl (k)           The kubernetes command line interface
-    helm                  The helm command line interface
+    kubectl (k)           The Kubernetes command line interface
+    istioctl (ic)         The Istio command line interface
+    helm                  The Helm command line interface
 
-The ${CYAN}scripts${ENDCOLOR} include:
+The ${BROWN}scripts${ENDCOLOR} include:
     az-initlogin          Login to the azure subscription and cluster, configured in the INIT_ environment variables
 
-The ${CYAN}kubectl extensions${ENDCOLOR} include:
+The ${BROWN}kubectl extensions${ENDCOLOR} include:
     k ns                  Switches the default namespace to the specified environment
 "
