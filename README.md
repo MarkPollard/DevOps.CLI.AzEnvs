@@ -8,10 +8,10 @@ Sets the promps to show the currently configured Azure user/subscription and Kub
 * [az](https://docs.microsoft.com/en-us/cli/azure/) azure cli
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/) aliased to `k`
   * [kubectl completion bash](https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-bash-linux/)
-* [istioctl](https://preliminary.istio.io/latest/docs/ops/diagnostic-tools/istioctl/) aliased to `ic`
-  * [istioctl completion bash](https://preliminary.istio.io/latest/docs/ops/diagnostic-tools/istioctl/#enabling-auto-completion)
 * [helm](https://helm.sh/docs/intro/install/)
   * [helm completion bash](https://helm.sh/docs/helm/helm_completion_bash/)
+* [istioctl](https://preliminary.istio.io/latest/docs/ops/diagnostic-tools/istioctl/) aliased to `ic`
+  * [istioctl completion bash](https://preliminary.istio.io/latest/docs/ops/diagnostic-tools/istioctl/#enabling-auto-completion)
 * [jq](https://stedolan.github.io/jq/)
 * [terraform](https://developer.hashicorp.com/terraform/) aliased to `tf`
 
@@ -35,13 +35,38 @@ docker compose up -d --build
 ## Connecting
 
 ```bash
-#dev
-docker compose exec devops-cli-azenvs-dev /bin/bash --login
-#prod
-docker compose exec devops-cli-azenvs-prod /bin/bash --login
+# To attach to the container instances current tty session
+# dev
+docker container attach devops-cli-azenvs-dev
+# prod
+docker container attach devops-cli-azenvs-prod
+# Note: use ^P^Q to detach, exit command will stop the container
+
+# or to start a new tty session
+# dev
+docker compose exec devops-cli-azenvs-dev /bin/bash -l
+# prod
+docker compose exec devops-cli-azenvs-prod /bin/bash -l
+```
+
+## Stopping and starting
+
+```bash
+# to stop the container instance
+# dev
+docker compose stop devops-cli-azenvs-dev
+# prod
+docker compose stop devops-cli-azenvs-prod
+
+# to start the container instance back up
+# dev
+docker compose start devops-cli-azenvs-dev
+# prod
+docker compose start devops-cli-azenvs-prod
 ```
 
 ## Removing
+
 ```bash
 docker compose down -v
 ```

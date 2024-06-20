@@ -12,8 +12,8 @@ A preconfigured container with required CLI tools, scripts and extensions for ma
 ${BROWN}CLI Tools${ENDCOLOR} include:
     az                    The Azure command line interface
     kubectl (k)           The Kubernetes command line interface
-    istioctl (ic)         The Istio command line interface
     helm                  The Helm command line interface
+    istioctl (ic)         The Istio command line interface
     terraform (tf)        The Hashicorp Terraform command line interface
 
 The ${BROWN}scripts${ENDCOLOR} include:
