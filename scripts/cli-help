@@ -15,6 +15,7 @@ ${BROWN}CLI Tools${ENDCOLOR} include:
     helm                  The Helm command line interface
     istioctl (ic)         The Istio command line interface
     terraform (tf)        The Hashicorp Terraform command line interface
+    k9s                   A terminal UI to interact with your Kubernetes cluster
 
 The ${BROWN}scripts${ENDCOLOR} include:
     az-initlogin          Login to the azure subscription and cluster, configured in the INIT_ environment variables

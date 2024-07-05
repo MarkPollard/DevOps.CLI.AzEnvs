@@ -12,6 +12,7 @@ Sets the promps to show the currently configured Azure user/subscription and Kub
   * [helm completion bash](https://helm.sh/docs/helm/helm_completion_bash/)
 * [istioctl](https://preliminary.istio.io/latest/docs/ops/diagnostic-tools/istioctl/) aliased to `ic`
   * [istioctl completion bash](https://preliminary.istio.io/latest/docs/ops/diagnostic-tools/istioctl/#enabling-auto-completion)
+* [k9s](https://github.com/derailed/k9s/)
 * [jq](https://stedolan.github.io/jq/)
 * [terraform](https://developer.hashicorp.com/terraform/) aliased to `tf`
 

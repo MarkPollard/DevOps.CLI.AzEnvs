@@ -13,7 +13,12 @@ RUN az aks install-cli && \
     TERRAFORM_VERSION="${TERRAFORM_VERSION##*/}" && \
     wget "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" && \
     unzip "terraform_${TERRAFORM_VERSION}_linux_amd64.zip" && rm "terraform_${TERRAFORM_VERSION}_linux_amd64.zip" && \
-    mv terraform /usr/local/bin
+    mv terraform /usr/local/bin && \
+    mkdir k9s-installation && cd ./k9s-installation && \
+    K9S_VERSION="$(curl https://api.github.com/repos/derailed/k9s/tags | jq -r '.[0].name')" && \
+    curl -LO "https://github.com/derailed/k9s/releases/download/${K9S_VERSION}/k9s_Linux_amd64.tar.gz" && \
+    tar xf k9s_Linux_amd64.tar.gz && mv k9s /usr/local/bin && \
+    cd ../ && rm -rf k9s-installation
 
 RUN curl -s https://ohmyposh.dev/install.sh | bash -s
 
