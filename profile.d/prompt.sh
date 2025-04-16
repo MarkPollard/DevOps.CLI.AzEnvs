@@ -10,7 +10,7 @@ eval "$(oh-my-posh init bash --config ~/.ohmy.theme.omp.json)"
 
 source <(kubectl completion bash)
 source <(helm completion bash)
-source /usr/local/bin/az.completion.sh
+source /usr/local/bin/az.completion
 source /usr/local/bin/istioctl.bash
 
 alias k=kubectl
